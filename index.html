@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en" id="home">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="style.css">-->
+    <title>KUMO E-Shop</title>
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+}
+
+/*this is header*/
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10%;
+}
+
+/*Sticky Header-css*/
+header.sticky{
+    background: #fff;
+    padding: 20px 10%;
+    box-shadow: 0px 0px 10px rgba(0 0 0 / 10%);
+}
+
+/*For Logo*/
+.logo img {
+    max-width: 120px;
+    height: auto;
+}
+
+/*For navigation bar*/
+.navmenu {
+    display: flex;
+}
+.navmenu a {
+    color: #2c2c2c;
+    font-size: 16px;
+    text-transform: capitalize;
+    padding: 10px 20px;
+    font-weight: 400;
+    transition: all .42s ease;
+}
+.navmenu a:hover {
+    color: #EE1C47;
+}
+.nav-icon {
+    display: flex;
+    align-items: center;
+}
+.nav-icon img{
+    margin-right: 20px;
+    color: #2c2c2c;
+    font-size: 25px;
+    font-weight: 400;
+    transition: all .42s ease;
+    max-width: 25px;
+}
+.nav-icon img:hover {
+    transform: scale(1.1);
+    color: #EE1C47;
+}
+
+/* Cart-icon-css */
+#cart-icon{
+    position: relative;
+    display: flex;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* MENU-ICON */
+#menu-icon {
+    font-size: 35px;
+    color: #2c2c2c;
+    z-index: 10001;
+    cursor: pointer;
+}
+#menu-icon:hover{
+    color: #EE1C47;
+}
+
+.main-home {
+    width: 100%;
+    height: 100vh;
+    background-image: url(banner.jpg);
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+.main-home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.main-text {
+    position: relative;
+    z-index: 1;
+    margin-left: 10%;
+    background: cover;
+}
+.main-text h5 {
+    color: #EE1C47;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+.main-text h1 {
+    color: black;
+    font-size: 65px;
+    text-transform: capitalize;
+    line-height: 1.1;
+    font-weight: 600;
+    margin: 6px 0 10px;
+}
+.main-text {
+    color: #333c56;
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+.main-btn {
+    display: inline-block;
+    color: #111;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: 2px solid #ddd;
+    padding: 12px 25px;
+    transition: all .42s ease;
+}
+.main-btn:hover {
+    background-color: #000;
+    color: #fff
+}
+.down-arrow {
+    position: absolute;
+    top: 85%;
+    right: 11%;
+}
+.down img {
+    font-size: 30px;
+    color: #2c2c2c;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    padding: 12px 12px;
+}
+.down img:hover {
+    background-color: #2c2c2c;
+    color: #fff;
+    transition: all .42s ease;
+}
+
+/*for trending section-css*/
+.center-text h2 {
+    color: #111;
+    font-size: 28px;
+    text-transform: capitalize;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+.center-text span {
+    color: #EE1C47;
+}
+
+/*For products*/
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+    gap: 2rem;
+}
+
+/*Rows for the Procducts*/
+.row {
+    position: relative;
+    transition: all .40s;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.row img {
+    width: 100%;
+    height: auto;
+    transition: all .40s;
+    border-radius: 5px;
+}
+.row .add-cart{
+    border-radius: 6px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+.row img:hover {
+    transform: scale(0.9);
+}
+.row img button {
+    background-color: #353432;
+    color: #eee;
+    padding: 5px 10px;
+    border-radius: none;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+}
+.product-text h5 {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #27b737;
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+.heart-icon img{
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+    max-width: 20px;
+}
+.heart-icon:hover {
+    color: #EE1C47;
+}
+.ratting img{
+    color: #fff200;
+    font-size: 18px;
+    max-width: 15px;
+}
+.price h4{
+    color: #111;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 400;
+}
+.price p{
+    color: #151515;
+    font-size: 14px;
+}
+.price img{
+    max-width: 20px;
+}
+
+/* Variation for the products */
+.variation-container {
+    display: none;
+    margin-top: 10px;
+}
+.sizes button, .colors button {
+    margin: 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+.sizes button.selected, .colors button.selected{
+    background-color: #000;
+    color: #fff;
+}
+.sizes button.selected, .colors button.selected:hover{
+    background-color: #000;
+    color: #fff;
+    transform: scale(1.3);
+}
+
+/* contact-section */
+.contact {
+    background-color: #f3f4f6;
+}
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, auto));
+    gap: 3rem;
+}
+.first-info img{
+    width: 140px;
+    height: auto;
+    padding: 20px;
+}
+.contact-info h4 {
+    color: #212529;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 15px;
+    margin: 5px;
+}
+.contact-info p {
+    color: #565656;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 1.5;
+    cursor: pointer;
+    transition: all .42s;
+    padding: 15px;
+    margin: 10px;
+}
+.contact-info p:hover {
+    color: #EE1C47;
+}
+.social-icon img{
+    color: #565656;
+    margin-right: 10px;
+    font-size: 20px;
+    transition: all .42s;
+    max-width: 70px;
+}
+.social-icon img:hover {
+    transform: scale(1.3);
+}
+.end-text {
+    background-color: #edfff1;
+    text-align: center;
+    padding: 20px;
+}
+.end-text p {
+    color: #111;
+    text-transform: capitalize;
+}
+
+/* Responsive-css */
+@media(max-width: 890px){
+    header {
+        padding: 20px 3%;
+        transition: .4s;
+    }
+}
+@media(max-width: 630px){
+    .main-text h1{
+        font-size: 50px;
+        transition: .4s;
+    }
+    .main-text p {
+        font-size: 18px;
+        transition: .4s;
+    }
+    .main-btn {
+        padding: 10px 20px;
+        transition: .4s;
+    }
+}
+@media(max-width: 750px){
+    .navmenu{
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        width: 300px;
+        height: 130vh;
+        background: #edfff1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 120px 30px;
+        transition: all .42s;
+    }
+    .navmenu a{
+        display: block;
+        margin: 18px 0;
+    }
+    .navmenu.open{
+        right: 0;
+    }
+}
+
+/* Modal-css */
+.zoomed-image {
+    width: 100%;
+    max-width: 400px;
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    display: none;
+}
+.modal.show {
+    display: block;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.buy-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.notification {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out;
+}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+/* About Us-css */
+.about-us {
+    padding: 50px;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.about-text {
+    flex: 1;
+    max-width: 600px;
+    text-align: left;
+}
+
+.about-text h2 {
+    font-size: 36px;
+    color: #333;
+}
+
+.about-text span {
+    color: #e60023;
+}
+
+.about-text p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+.about-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #e60023;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.about-btn:hover {
+    background: #333;
+}
+
+.about-image img {
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+/*for Comment are CSS*/
+.comments-list {
+    margin-top: 20px;
+}
+
+.comment {
+    background-color: #f8f8f8;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-text {
+    font-size: 16px;
+    color: #333;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: none;
+}
+
+.comment-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #45a049;
+}
+    </style>
+
+</head>
+<body>
+    
+    <!--Navigation Bar-->
+    <header>
+        <a href="#home" class="logo"><img src="logo.png" alt="error"></a>
+
+        <ul class="navmenu">
+            <li><a href="#home" style="color: #000"><b>Home</b></a></li>
+            <li><a href="#contact" style="color: #000"><b>Contact</b></a></li>
+            <li><a href="#products" style="color: #000"><b>Product</b></a></li>
+            <li><a href="#about" style="color: #000"><b>About</b></a></li>
+        </ul>
+        <div class="nav-icon">
+
+            <img src="search-icon.png" alt="error">
+            <img src="user-icon.png" alt="error">
+            <div id="cart-icon">
+                <img src="cart-icon.png" alt="error">
+            </div>
+
+            <div class="bx bx-menu" id="menu-icon"><img src="menu-icon.png" alt="error"></div>
+        </div>
+    </header>
+
+
+    <section>
+        <div class="main-home">
+            <div class="main-text">
+                
+                <h5 style="color:#ddd;">Winter Collection</h5>
+                <h1 style="color:#ddd;">New Winter <br> Collection</h1>
+                <p style="color: #ddd;">There's Nothing like Trend</p>
+
+                <a href="#products" class="main-btn" style="color: #ddd;">Shop Now  </a>
+            </div>
+            <div class="down-arrow">
+                <a href="#trending" class="down"><img src="arrow-down.png" alt="error"></a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Trending products-section -->
+    <section class="trending-product" id="trending">
+        <div class="center-text">
+            <h2>Our Trending <span>Products</span></h2>
+        </div>
+
+        <!-- My Cart Content-->
+        
+        <!-- Products -->
+        <div class="products" id="products">
+            <div class="row" onclick="showModal('Winter Jacket', '₱999', 'Black', 'L', 'A cozy winter jacket perfect for cold weather.', 'product-1.png')">
+                <img src="product-1.png" alt="error" class="zoomed-image">
+                <div class="product-text">
+                    <h5>Sale</h5>
+                </div>
+                <div class="heart-icon">
+                    <img src="heart-icon.png" alt="error">
+                </div>
+                <div class="ratting">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="star-half-icon.png" alt="error">
+                </div>
+
+                <!-- Price of product -->
+                 <div class="price">
+                    <h4>Winter Jacket</h4>
+                    <p>₱999</p>
+                 </div>
+            </div>
+
+            <!-- Modal Backdrop -->
+            <div id="modal-backdrop" class="modal-backdrop"></div>
+
+            <!-- Modal for Product Details -->
+            <div id="product-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">×</span>
+                    <h2 id="product-name">Product Name</h2>
+                    <img id="modal-img" src="" alt="Product Image" style="width: 100%; max-width: 300px;">
+                    <p id="product-description">Description goes here.</p>
+                    <p><strong>Size:</strong> <span id="product-size"></span></p>
+                    <p><strong>Color:</strong> <span id="product-color"></span></p>
+                    <button class="buy-btn" onclick="addToCart()">Buy</button>
+                </div>
+            </div>
+
+            <!-- Notification -->
+            <div id="notification" class="notification">Item added to cart!</div>
+
+            <div class="row" onclick="showModal('Cozy Sweater', '₱999', 'Black', 'L', 'A cozy Sweater perfect for cold weather.', 'product-2.png')">
+                <img src="product-2.png" alt="error" >
+                <div class="product-text">
+                    <h5>New</h5>
+                </div>
+                <div class="heart-icon">
+                    <img src="heart-icon.png" alt="error">
+                </div>
+                <div class="ratting">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="star-half-icon.png" alt="error">
+                </div>
+
+                <!-- Price of product -->
+                 <div class="price">
+                    <h4>Cozy Sweater</h4>
+                    <p>₱899</p>
+                 </div>
+            </div>
+
+            <div class="row" onclick="showModal('Leather Coat', '₱999', 'Black', 'L', 'A cozy Leather Coat perfect for cold weather.', 'product-3.webp')">
+                <img src="product-3.webp" alt="">
+
+                <div class="heart-icon">
+                    <img src="heart-icon.png" alt="error">
+                </div>
+                <div class="ratting">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="star-half-icon.png" alt="error">
+                </div>
+
+                <!-- Price of product -->
+                 <div class="price">
+                    <h4>Leather Coat</h4>
+                    <p>₱799</p>
+                 </div>
+
+
+
+            </div>
+
+            <div class="row" onclick="showModal('Winter Jacket', '₱999', 'Black', 'L', 'A cozy winter jacket perfect for cold weather.', 'product-4.png')">
+                <img src="product-4.png" alt="">
+                <div class="product-text">
+                    <h5>Hot</h5>
+                </div>
+                <div class="heart-icon">
+                    <img src="heart-icon.png" alt="error">
+                </div>
+                <div class="ratting">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="star-half-icon.png" alt="error">
+                </div>
+
+                <!-- Price of product -->
+                 <div class="price">
+                    <h4>Winter Boots</h4>
+                    <p>₱749</p>
+                 </div>      
+            </div>
+
+            <div class="row" onclick="showModal('Water proof Winter jacket', '₱999', 'Black', 'L', 'A cozy Water proof Winter jacket perfect for cold weather.', 'product-5.png')">
+                <img src="product-5.png" alt="error">
+                
+                <div class="heart-icon">
+                    <img src="heart-icon.png" alt="error">
+                </div>
+                <div class="ratting">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="star-half-icon.png" alt="error">
+                </div>
+
+                <!-- Price of product -->
+                 <div class="price">
+                    <h4>Water proof Winter jacket</h4>
+                    <p>₱849</p>
+                 </div>
+            </div>
+
+            <div class="row" onclick="showModal('Long sleeve', '₱999', 'Black', 'L', 'A cozy Long sleeve perfect for cold weather.', 'product-6.png')">
+                <img src="product-6.png" alt="error">
+                <div class="product-text">
+                    <h5>Hot</h5>
+                </div>
+                <div class="heart-icon">
+                    <img src="heart-icon.png" alt="error">
+                </div>
+                <div class="ratting">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="solid-star.png" alt="error">
+                    <img src="star-half-icon.png" alt="error"> 
+                </div>
+
+                <!-- Price of product -->
+                 <div class="price">
+                    <h4>Long sleeve</h4>
+                    <p>₱949</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">Item added to cart!</div>
+
+
+    <!-- About Us Section -->
+    <section class="about-us" id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>About <span>Us</span></h2>
+                <p>Welcome to KUMO your one-stop destination for the latest fashion trends.
+                We believe in providing high-quality apparel that blends comfort and style.
+                Our mission is to make shopping easy, affordable, and enjoyable for everyone.</p>
+                <p>Founded in 2025, we have served thousands of customers with dedication and passion.
+                Our team carefully curates each product to ensure the best quality at the best price.</p>
+                <p>Join us on this journey and experience fashion like never before!</p>
+                <a href="#contact" class="about-btn">Contact Us</a>
+            </div>
+            <div class="about-image">
+                <img src="about-us.jpg" alt="error">
+            </div>
+        </div>
+    </section>
+
+        <!-- Comment Section -->
+    <section class="comments" id="comments">
+        <div class="center-text">
+            <h2>Leave a Recommendation or Message</h2>
+        </div>
+
+        <div class="comment-form">
+            <textarea id="comment-input" placeholder="Write your message or recommendation here..." rows="4" required></textarea>
+            <button id="submit-comment" onclick="submitComment()">Submit</button>
+        </div>
+
+        <div id="comments-list" class="comments-list">
+            <!-- User comments will appear here -->
+        </div>
+    </section>
+
+        
+       <!-- contact-section -->
+        <section class="contact" id="contact">
+            <div class="contact-info">
+                <div class="first-info">
+                    <img src="logo.png" alt="error">
+
+                    <p>Purok-5 Brgy.Silanga, <br> Catbalogan City, Samar 6700</p>
+                    <p>(63+) 09123456789</p>
+                    <p>gianzartiga11@gmail.com</p>
+
+                    <div class="social-icon">
+                        <a href="https://www.facebook.com/gian.zartiga"><img src="fb-icon.png" alt="error"></a>
+                        <a href="https://www.tiktok.com/@gianvillarz"><img src="tiktok-icon.png" alt="error"></a>
+                        <a href="https://www.instagram.com/itsmegi14?igsh=bjF1d2ZvamZvZzUw"><img src="ig-icon.png" alt="error"></a>
+                    </div>
+                </div>
+
+                <div class="second-info">
+                    <h4>Support</h4>
+                    <p>Contact us</p>
+                    <p>About page</p>
+                    <p>Size guide</p>
+                    <p>Shopping & returns</p>
+                    <p>Privacy</p>
+                </div>
+
+                <div class="third-info">
+                    <h4>Shop</h4>
+                    <p>Men's Shopping</p>
+                    <p>Women's Shopping</p>
+                    <p>Kid's Shoppping</p>
+                    <p>Furniture</p>
+                    <p>Discount</p>
+                </div>
+                
+                <div class="forth-info">
+                    <h4>Company</h4>
+                    <p>About</p>
+                    <p>Affiliate</p>
+                    <p>Login</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="end-text">
+            <p>Copyright &#169; @2025. All rights reserve.Designed by Gian Zartiga</p>
+        </div>
+
+        <!-- Simple Functions-->
+        <script>
+
+            //This is JS is for the menu-icon//
+            let menu = document.querySelector('#menu-icon');
+            let navmenu = document.querySelector('.navmenu');
+
+            menu.onclick = () => {
+                menu.classList.toggle('bx-x');
+                navmenu.classList.toggle('open')
+            }
+
+            //Functional for the products
+            function toggleVariations(product) {
+            let variations = product.querySelector('.variation-container');
+            variations.style.display = variations.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function selectSize(button) {
+            let buttons = button.parentElement.querySelectorAll('button');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        }
+
+        function selectColor(button) {
+            let buttons = button.parentElement.querySelectorAll('button');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        }
+
+        //Sticky Header Navigation//
+        const header = document.querySelector("header");
+        
+        window.addEventListener("scroll", function(){
+            header.classList.toggle ("sticky", this.window.scrollY > 0);
+        });
+
+        // Open the modal with product details
+        function showModal(name, price, color, size, description, imgSrc) {
+            document.getElementById("product-name").innerText = name;
+            document.getElementById("product-size").innerText = size;
+            document.getElementById("product-color").innerText = color;
+            document.getElementById("product-description").innerText = description;
+            document.getElementById("modal-img").src = imgSrc;
+
+        // Show the modal and backdrop
+            document.getElementById("product-modal").classList.add("show");
+            document.getElementById("modal-backdrop").style.display = 'block';
+    }
+
+        // Close the modal
+        function closeModal() {
+            document.getElementById("product-modal").classList.remove("show");
+            document.getElementById("modal-backdrop").style.display = 'none';
+    }
+
+            //search icon//
+                    document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.createElement("input");
+            searchInput.setAttribute("type", "text");
+            searchInput.setAttribute("id", "search-box");
+            searchInput.setAttribute("placeholder", "Search products...");
+            searchInput.style.padding = "5px";
+            searchInput.style.marginRight = "10px";
+            
+            const searchIcon = document.querySelector(".nav-icon img:first-child");
+            searchIcon.parentNode.insertBefore(searchInput, searchIcon);
+            
+            searchInput.addEventListener("input", function () {
+                const query = this.value.toLowerCase();
+                const products = document.querySelectorAll(".products .row");
+                
+                products.forEach(product => {
+                    const productName = product.querySelector(".price h4").innerText.toLowerCase();
+                    
+                    if (productName.includes(query)) {
+                        product.style.display = "block";
+                    } else {
+                        product.style.display = "none";
+                    }
+                });
+            });
+        });
+
+        // Function to simulate adding an item to the cart
+        function addToCart() {
+            // Show the notification
+            let notification = document.getElementById('notification');
+            notification.style.display = 'block';
+
+            // Hide the notification after 3 seconds
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 3000);  // 3000 milliseconds = 3 seconds
+        }
+
+        //Function comment area can leave a message//
+        function submitComment() {
+    // Get the comment text from the textarea
+    const commentInput = document.getElementById('comment-input');
+    const commentText = commentInput.value.trim();
+
+    // Check if the comment is not empty
+    if (commentText !== "") {
+        // Create a new comment element
+        const newComment = document.createElement('div');
+        newComment.classList.add('comment');
+
+        // Create the comment text
+        const commentContent = document.createElement('p');
+        commentContent.classList.add('comment-text');
+        commentContent.textContent = commentText;
+
+        // Append the comment to the comment list
+        newComment.appendChild(commentContent);
+        document.getElementById('comments-list').appendChild(newComment);
+
+        // Clear the textarea after submission
+        commentInput.value = '';
+    } else {
+        alert("Please write a comment before submitting.");
+    }
+}
+
+        </script>
+</body>
+</html>
